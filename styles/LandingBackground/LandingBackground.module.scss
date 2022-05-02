@@ -1,0 +1,33 @@
+.LandingBackground {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background: #171529; // dark mode
+    overflow: hidden;
+    // 7A33EB BF50F3
+
+
+    .LandingBackground_backdrop {
+        z-index: 5;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background: rgba(255, 255, 255, 0);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(80px);
+        -webkit-backdrop-filter: blur(80px);
+    }
+
+    .LandingBackground_drop {
+        z-index: 2;
+        border-radius: 50%;
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        filter: blur(20px);
+        opacity: 0.8;
+    }
+
+}

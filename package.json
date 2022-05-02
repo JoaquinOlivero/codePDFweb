@@ -9,9 +9,20 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@codemirror/lang-css": "^0.20.0",
+    "@codemirror/lang-html": "^0.20.0",
+    "@codemirror/theme-one-dark": "^0.20.0",
+    "@react-pdf/renderer": "^2.1.1",
+    "@uiw/react-codemirror": "^4.7.0",
+    "axios": "^0.27.2",
+    "css": "^3.0.0",
+    "css-parse": "^2.0.0",
     "next": "12.1.4",
     "react": "18.0.0",
-    "react-dom": "18.0.0"
+    "react-dom": "18.0.0",
+    "react-pdf": "^5.7.2",
+    "react-pdf-html": "^1.1.8",
+    "sass": "^1.50.1"
   },
   "devDependencies": {
     "eslint": "8.12.0",

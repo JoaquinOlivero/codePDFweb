@@ -1,0 +1,151 @@
+$glass: rgba(255, 255, 255, 0.2);
+$glass-icon: rgba(255, 255, 255, 0.3);
+$gradient: linear-gradient(35deg, red, purple);
+$option: #171529;
+
+
+.Editor {
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    width: 70%;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+
+    .Editor_options_container {
+        display: flex;
+        margin: 15px 10px;
+        color: white;
+
+        label {
+            font-weight: 500;
+            margin-right: 5px;
+        }
+
+        div {
+            margin-right: 20px;
+        }
+
+        .Editor_options_page {
+
+            /* <select> styles */
+            select {
+                /* Reset */
+                appearance: none;
+                border: 0;
+                outline: 0;
+                font: inherit;
+                /* Personalize */
+                width: 120px;
+                height: 25px;
+                padding: 0 4em 0 1em;
+                background: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg) no-repeat right 0.8em center / 1.4em,
+                    linear-gradient(to left, $glass-icon 3em, $glass 3em);
+                color: white;
+                border-radius: 0.25em;
+                box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+                cursor: pointer;
+                transition: background-color 250ms;
+
+                -ms-overflow-style: none;
+                /* IE and Edge */
+                scrollbar-width: none;
+                /* Firefox */
+
+                /* <option> colors */
+                option {
+                    background-color: $option;
+                }
+
+                &:hover {
+                    background-color: $option;
+                }
+
+
+
+                /* Remove focus outline */
+                &:focus {
+                    outline: none;
+                }
+
+                /* Remove IE arrow */
+                &::-ms-expand {
+                    display: none;
+                }
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+            }
+        }
+
+        .Editor_options_google_font {
+            display: flex;
+            align-items: center;
+
+            input {
+                /* Reset */
+                appearance: none;
+                border: 0;
+                outline: 0;
+                /* Personalize */
+                width: 200px;
+                height: 25px;
+                padding: 0 5px;
+                background: linear-gradient(to left, $glass 3em, $glass 3em);
+                color: rgba(255, 255, 255, 0.5);
+                border-radius: 0.25em;
+                box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+                cursor: pointer;
+                transition: all 250ms;
+
+                &:hover {
+                    color: white;
+                    background-color: $option;
+                }
+
+                &:focus {
+                    color: white;
+                    background-color: $option;
+                }
+            }
+
+            .Editor_options_google_font_help {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 20px;
+                width: 20px;
+                opacity: 0.5;
+                margin-left: 5px;
+                border: 1px solid white;
+                border-radius: 50%;
+                padding: 0 6px;
+                cursor: pointer;
+                transition: opacity 250ms;
+
+                &:hover {
+                    opacity: 1;
+                }
+
+                .Editor_options_google_font_help_msg {
+                    padding: 4px 6px;
+                    font-size: 12px;
+                    position: absolute;
+                    bottom: 150%;
+                    background-color: #171529;
+                }
+            }
+        }
+    }
+
+    .Editor_editors_container {
+        overflow: hidden;
+        display: flex;
+        justify-content: space-around;
+        height: 100%;
+        width: 100%;
+        align-self: center;
+    }
+}
