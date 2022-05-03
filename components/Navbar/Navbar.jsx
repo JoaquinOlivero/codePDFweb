@@ -13,6 +13,12 @@ const Navbar = () => {
                         <a>RapidAPI</a>
                     </Link>
                 </div>
+
+                <div className={styles.Navbar_menu_element} style={{ cursor: 'not-allowed', pointerEvents: 'none' }}>
+                    <Link href="https://rapidapi.com/ChipiBarijho/api/codepdf">
+                        <a>Docs</a>
+                    </Link>
+                </div>
             </div>
         </div>
     )
