@@ -17,12 +17,15 @@ const CodeMirrorEditor = ({ width, value, borderRadius, langExtension, lang, set
     const CodeMirrorOnChange = async (value) => {
         if (lang === 'html') {
             setHtmlValue(value)
+            localStorage.setItem('htmlValue', value)
         } else if (lang === 'css') {
             try {
+                localStorage.setItem('editorCssValue', value)
                 const res = await fetch('/api/parse', { method: 'POST', body: value })
                 const data = await res.json();
 
                 const transformedCss = await transformCss(data)
+                localStorage.setItem('cssValue', JSON.stringify(transformedCss))
                 setCssValue(transformedCss)
                 console.clear()
             } catch (error) {
@@ -34,8 +37,8 @@ const CodeMirrorEditor = ({ width, value, borderRadius, langExtension, lang, set
     const debouncedCodeMirrorOnChange = useCallback(debouncer(CodeMirrorOnChange, 300), []);
 
     return (
-        // <div className={styles.CodeMirrorEditor} ref={editorContainer} style={{ width: width, borderRadius: borderRadius }}>
         <div className={styles.CodeMirrorEditor} ref={editorContainer} style={{ width: width }}>
+            <span className={styles.CodeMirrorEditor_lang}>{lang}</span>
             <CodeMirror
                 value={value}
                 height={`${height}px`}
@@ -45,7 +48,7 @@ const CodeMirrorEditor = ({ width, value, borderRadius, langExtension, lang, set
                 onChange={(value) => { debouncedCodeMirrorOnChange(value) }}
             />
 
-        </div>
+        </div >
     )
 }
 

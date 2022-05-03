@@ -9,7 +9,7 @@ const Navbar = () => {
 
             <div className={styles.Navbar_menu}>
                 <div className={styles.Navbar_menu_element}>
-                    <Link href="/docs/api">
+                    <Link href="https://rapidapi.com/ChipiBarijho/api/codepdf">
                         <a>RapidAPI</a>
                     </Link>
                 </div>
