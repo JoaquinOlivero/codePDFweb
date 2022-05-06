@@ -1,10 +1,11 @@
 import { Document, Page, Font, usePDF } from '@react-pdf/renderer';
 import { Document as DocumentViewer, Page as PageViewer } from 'react-pdf/dist/esm/entry.webpack5'
 import Html from 'react-pdf-html'; // converts html into components used by ReactPDF
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const Pdf = ({ htmlValue, cssValue, pageSizeValue, fonts }) => {
     const pdfContainerRef = useRef(null)
+    const size = useWindowSize();
 
     const Doc = (
         <Document>
@@ -37,10 +38,43 @@ const Pdf = ({ htmlValue, cssValue, pageSizeValue, fonts }) => {
     return (
         <div style={{ color: 'white' }} ref={pdfContainerRef}>
             {pdfContainerRef.current && <DocumentViewer file={instance.blob} loading={loadingScreen}>
-                <PageViewer pageNumber={1} loading={loadingScreen} height={pdfContainerRef.current.clientHeight} />
+                {size.width > 1300 ?
+                    <PageViewer pageNumber={1} loading={loadingScreen} height={pdfContainerRef.current.clientHeight} />
+                    :
+                    <PageViewer pageNumber={1} loading={loadingScreen} height={pdfContainerRef.current.clientHeight} width={size.width * .80} />
+                }
+
+
             </DocumentViewer>}
         </div>
     )
 }
 
 export default Pdf
+
+// Hook
+function useWindowSize() {
+    // Initialize state with undefined width/height so server and client renders match
+    // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
+    const [windowSize, setWindowSize] = useState({
+        width: undefined,
+        height: undefined,
+    });
+    useEffect(() => {
+        // Handler to call on window resize
+        function handleResize() {
+            // Set window width/height to state
+            setWindowSize({
+                width: window.innerWidth,
+                height: window.innerHeight,
+            });
+        }
+        // Add event listener
+        window.addEventListener("resize", handleResize);
+        // Call handler right away so state gets updated with initial window size
+        handleResize();
+        // Remove event listener on cleanup
+        return () => window.removeEventListener("resize", handleResize);
+    }, []); // Empty array ensures that effect is only run on mount
+    return windowSize;
+}

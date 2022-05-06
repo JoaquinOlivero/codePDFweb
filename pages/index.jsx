@@ -6,7 +6,7 @@ export default function Index() {
   return (
     <div style={{ position: 'relative' }}>
       <Head>
-        <link rel='shorcut icon' href='/codePDFicon.ico' />
+        <link rel='icon' href='/images/favicon.ico' />
         <title>codePDF</title>
       </Head>
       <Home />

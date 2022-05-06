@@ -12,3 +12,11 @@
         text-transform: uppercase;
     }
 }
+
+
+@media (max-width: 1300px) {
+    .CodeMirrorEditor {
+        height: 70vh;
+        width: 49% !important;
+    }
+}

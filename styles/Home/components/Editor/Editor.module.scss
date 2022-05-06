@@ -149,3 +149,48 @@ $option: #171529;
         align-self: center;
     }
 }
+
+@media (max-width: 1300px) {
+    .Editor {
+        width: 95%;
+    }
+}
+
+@media (max-width: 450px) {
+    .Editor {
+        width: 98%;
+
+        .Editor_options_container {
+            margin: 4px;
+
+            .Editor_options_page {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                select {
+                    margin: 4px 0;
+                }
+            }
+
+            .Editor_options_google_font {
+                justify-content: center;
+                align-items: flex-start;
+                flex-direction: column;
+
+                input {
+                    width: 100%;
+                    margin: 4px 0;
+                }
+
+                .Editor_options_google_font_help {
+                    display: none;
+
+                    .Editor_options_google_font_help_msg {
+                        right: 0;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -47,3 +47,31 @@
         }
     }
 }
+
+@media (max-width: 1300px) {
+    .Home {
+        width: 100vw;
+        overflow: scroll;
+
+        .Home_content {
+
+
+            h1 {
+                margin-bottom: 20px;
+            }
+
+            .Home_content_main {
+                position: relative;
+                align-items: flex-start;
+
+                .Home_content_pdf {
+                    position: absolute;
+                    top: 75%;
+                    width: 98%;
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+}
