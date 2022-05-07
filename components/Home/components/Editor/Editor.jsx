@@ -6,12 +6,12 @@ import { css } from '@codemirror/lang-css';
 
 
 
-const Editor = ({ htmlValue, setHtmlValue, setCssValue, setPageSizeValue, setFonts, editorCssValue }) => {
+const Editor = ({ htmlValue, setHtmlValue, setCssValue, setPageSizeValue, setFonts, fonts, editorCssValue }) => {
 
     return (
         <div className={styles.Editor}>
             <div className={styles.Editor_options_container}>
-                <OptionsEditor setPageSizeValue={setPageSizeValue} setFonts={setFonts} styles={styles} />
+                <OptionsEditor setPageSizeValue={setPageSizeValue} setFonts={setFonts} fonts={fonts} styles={styles} />
             </div>
             <div className={styles.Editor_editors_container}>
                 <CodeMirrorEditor width={'54%'} value={htmlValue} setHtmlValue={setHtmlValue} borderRadius={'15px 0 0 15px'} langExtension={html()} lang='html' />

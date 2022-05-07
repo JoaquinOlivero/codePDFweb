@@ -28,9 +28,11 @@ const Home = () => {
             const html = localStorage.getItem('htmlValue');
             const css = localStorage.getItem('cssValue')
             const editorCss = localStorage.getItem('editorCssValue')
+            const googleFonts = localStorage.getItem('googleFonts')
             if (html) setHtmlValue(html)
             if (css) setCssValue(JSON.parse(css))
             if (editorCss) setEditorCssValue(editorCss)
+            if (googleFonts) setFonts(JSON.parse(googleFonts))
         }
 
     }, [])
@@ -42,7 +44,7 @@ const Home = () => {
             <div className={styles.Home_content}>
                 <h1>Preview your PDF</h1>
                 <div className={styles.Home_content_main}>
-                    <Editor htmlValue={htmlValue} cssValue={cssValue} setHtmlValue={setHtmlValue} setCssValue={setCssValue} editorCssValue={editorCssValue} setPageSizeValue={setPageSizeValue} setFonts={setFonts} />
+                    <Editor htmlValue={htmlValue} cssValue={cssValue} setHtmlValue={setHtmlValue} setCssValue={setCssValue} editorCssValue={editorCssValue} setPageSizeValue={setPageSizeValue} setFonts={setFonts} fonts={fonts} />
                     <div className={styles.Home_content_pdf}>
                         <Pdf htmlValue={htmlValue} cssValue={cssValue} pageSizeValue={pageSizeValue} fonts={fonts} />
                     </div>
