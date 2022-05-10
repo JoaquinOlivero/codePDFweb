@@ -14,8 +14,8 @@ const Editor = ({ htmlValue, setHtmlValue, setCssValue, pageSizeValue, setPageSi
                 <OptionsEditor pageSizeValue={pageSizeValue} setPageSizeValue={setPageSizeValue} setFonts={setFonts} styles={styles} />
             </div>
             <div className={styles.Editor_editors_container}>
-                <CodeMirrorEditor width={'54%'} value={htmlValue} setHtmlValue={setHtmlValue} borderRadius={'15px 0 0 15px'} langExtension={html()} lang='html' />
-                <CodeMirrorEditor width={'44%'} value={editorCssValue} setCssValue={setCssValue} borderRadius={'0 15px 15px 0'} langExtension={css()} lang='css' />
+                <CodeMirrorEditor width={'54%'} value={htmlValue} setHtmlValue={setHtmlValue} langExtension={html()} lang='html' />
+                <CodeMirrorEditor width={'44%'} value={editorCssValue} setCssValue={setCssValue} langExtension={css()} lang='css' />
             </div>
 
         </div>

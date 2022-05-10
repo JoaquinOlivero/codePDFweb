@@ -6,7 +6,7 @@ import styles from '../../../../../styles/Home/components/Editor/components/Code
 import { transformCss } from '../../../../../helpers/transformCss';
 import { debouncer } from '../../../../../helpers/debouncer';
 
-const CodeMirrorEditor = ({ width, value, borderRadius, langExtension, lang, setCssValue, setHtmlValue }) => {
+const CodeMirrorEditor = ({ width, value, langExtension, lang, setCssValue, setHtmlValue }) => {
     const [height, setHeight] = useState(0)
     const editorContainer = useRef(null)
 
