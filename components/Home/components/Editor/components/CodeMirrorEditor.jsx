@@ -40,7 +40,7 @@ const CodeMirrorEditor = ({ width, value, langExtension, lang, setCssValue, setH
 
     const copyToClipboard = () => {
         const html = localStorage.getItem('htmlValue')
-        const css = localStorage.getItem('cssValue')
+        const css = localStorage.getItem('editorCssValue')
         if (lang === 'html' && html) copyBtnUiHandler(refCopyBtn, html)
         if (lang === 'css' && css) copyBtnUiHandler(refCopyBtn, css)
     }

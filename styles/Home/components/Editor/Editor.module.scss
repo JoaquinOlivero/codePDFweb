@@ -14,7 +14,7 @@ $option: #171529;
 
     .Editor_options_container {
         display: flex;
-        margin: 15px 10px;
+        margin: 15px 10px 25px 10px;
         color: white;
 
         label {
@@ -141,7 +141,6 @@ $option: #171529;
     }
 
     .Editor_editors_container {
-        overflow: hidden;
         display: flex;
         justify-content: space-around;
         height: 100%;
@@ -153,6 +152,10 @@ $option: #171529;
 @media (max-width: 1300px) {
     .Editor {
         width: 95%;
+
+        .Editor_editors_container {
+            overflow: hidden;
+        }
     }
 }
 
@@ -161,7 +164,7 @@ $option: #171529;
         width: 98%;
 
         .Editor_options_container {
-            margin: 4px;
+            margin: 4px 4px 25px 4px;
 
             .Editor_options_page {
                 display: flex;
