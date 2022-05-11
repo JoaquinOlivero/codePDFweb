@@ -5,10 +5,12 @@ import { useRef, useState, useEffect, useCallback } from 'react';
 import styles from '../../../../../styles/Home/components/Editor/components/CodeMirrorEditor.module.scss'
 import { transformCss } from '../../../../../helpers/transformCss';
 import { debouncer } from '../../../../../helpers/debouncer';
+import copyBtnUiHandler from '../../../../../helpers/copyBtnUiHandler';
 
 const CodeMirrorEditor = ({ width, value, langExtension, lang, setCssValue, setHtmlValue }) => {
     const [height, setHeight] = useState(0)
     const editorContainer = useRef(null)
+    const refCopyBtn = useRef(null)
 
     useEffect(() => {
         setHeight(editorContainer.current.clientHeight)
@@ -36,9 +38,19 @@ const CodeMirrorEditor = ({ width, value, langExtension, lang, setCssValue, setH
 
     const debouncedCodeMirrorOnChange = useCallback(debouncer(CodeMirrorOnChange, 300), []);
 
+    const copyToClipboard = () => {
+        const html = localStorage.getItem('htmlValue')
+        const css = localStorage.getItem('cssValue')
+        if (lang === 'html' && html) copyBtnUiHandler(refCopyBtn, html)
+        if (lang === 'css' && css) copyBtnUiHandler(refCopyBtn, css)
+    }
+
     return (
         <div className={styles.CodeMirrorEditor} ref={editorContainer} style={{ width: width }}>
-            <span className={styles.CodeMirrorEditor_lang}>{lang}</span>
+            <div className={styles.CodeMirrorEditor_header}>
+                <span className={styles.CodeMirrorEditor_lang}>{lang}</span>
+                <div className={styles.CodeMirrorEditor_header_copy} onClick={copyToClipboard} ref={refCopyBtn}>Copy</div>
+            </div>
             <CodeMirror
                 value={value}
                 height={`${height}px`}
