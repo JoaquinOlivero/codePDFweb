@@ -16,6 +16,7 @@ $option: #171529;
         display: flex;
         margin: 15px 10px 25px 10px;
         color: white;
+        position: relative;
 
         label {
             font-weight: 500;
@@ -136,6 +137,25 @@ $option: #171529;
                     bottom: 150%;
                     background-color: #171529;
                 }
+            }
+        }
+
+        .Editor_options_download {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: absolute;
+            right: 0px;
+            transform: translateX(20%);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            opacity: 0.5;
+            transition: opacity 250ms;
+
+            &:hover {
+                opacity: 1;
             }
         }
     }

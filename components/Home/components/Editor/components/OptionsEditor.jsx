@@ -1,9 +1,11 @@
 import { useCallback, useState, useEffect } from 'react';
+import { Document, Page, Font, pdf } from '@react-pdf/renderer';
+import Html from 'react-pdf-html'; // converts html into components used by ReactPDF
 import { debouncer } from '../../../../../helpers/debouncer';
 
 const pageSizes = ["4A0", "2A0", "A0", "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "B0", "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "B10", "C0", "C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9", "C10", "RA0", "RA1", "RA2", "RA3", "RA4", "SRA0", "SRA1", "SRA2", "SRA3", "SRA4", "EXECUTIVE", "FOLIO", "LEGAL", "LETTER", "TABLOID", "ID1"]
 
-const OptionsEditor = ({ pageSizeValue, setPageSizeValue, setFonts, styles }) => {
+const OptionsEditor = ({ pageSizeValue, setPageSizeValue, setFonts, styles, htmlValue, cssValue, fonts }) => {
     const [fontsStatus, setFontsStatus] = useState(null)
     const [fontExample, setFontExample] = useState(null)
     const [googleFontUrl, setGoogleFontUrl] = useState('')
@@ -52,6 +54,31 @@ const OptionsEditor = ({ pageSizeValue, setPageSizeValue, setFonts, styles }) =>
         }, 120);
     }
 
+    // Download PDF
+    const Doc = (
+        <Document>
+            <Page size={pageSizeValue}>
+                <Html stylesheet={cssValue}>{htmlValue}</Html>
+            </Page>
+        </Document>
+    )
+
+    const downloadPdf = async () => {
+        if (fonts) {
+            fonts.forEach(font => { Font.register({ family: font.family, src: font.src, fontWeight: font.fontWeight, fontStyle: font.fontStyle }) });
+        }
+        const blob = await pdf(Doc).toBlob();
+        const link = document.createElement('a');
+        // create a blobURI pointing to our Blob
+        link.href = URL.createObjectURL(blob);
+        link.download = 'codePDF.pdf';
+        document.body.append(link);
+        link.click();
+        link.remove();
+        // in case the Blob uses a lot of memory
+        setTimeout(() => URL.revokeObjectURL(link.href), 5000);
+    }
+
     return (
         <>
             <div className={styles.Editor_options_page}>
@@ -70,6 +97,10 @@ const OptionsEditor = ({ pageSizeValue, setPageSizeValue, setFonts, styles }) =>
                     {fontExample && <span className={styles.Editor_options_google_font_help_msg}>Copy the url from Google Fonts. <br /> Example: https://fonts.googleapis.com/css2?family=Roboto&display=swap <br />If accepted, border should turn green.</span>}
                 </span>
 
+            </div>
+
+            <div className={styles.Editor_options_download} onClick={downloadPdf}>
+                Download
             </div>
         </>
     )

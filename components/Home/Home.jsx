@@ -44,9 +44,9 @@ const Home = () => {
         <div className={styles.Home}>
             <Navbar />
             <div className={styles.Home_content}>
-                <h1>Preview your PDF</h1>
+                <h1>Code your own PDF</h1>
                 <div className={styles.Home_content_main}>
-                    <Editor htmlValue={htmlValue} cssValue={cssValue} setHtmlValue={setHtmlValue} setCssValue={setCssValue} editorCssValue={editorCssValue} pageSizeValue={pageSizeValue} setPageSizeValue={setPageSizeValue} setFonts={setFonts} />
+                    <Editor htmlValue={htmlValue} cssValue={cssValue} setHtmlValue={setHtmlValue} setCssValue={setCssValue} editorCssValue={editorCssValue} pageSizeValue={pageSizeValue} setPageSizeValue={setPageSizeValue} setFonts={setFonts} fonts={fonts} />
                     <div className={styles.Home_content_pdf}>
                         <Pdf htmlValue={htmlValue} cssValue={cssValue} pageSizeValue={pageSizeValue} fonts={fonts} />
                     </div>
